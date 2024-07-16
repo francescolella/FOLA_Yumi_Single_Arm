@@ -1,0 +1,423 @@
+#:kivy 1.0
+<Controller>:
+    name: 'controller'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: 0.2
+        pos_hint: {'y': 0.8}
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Movimentazione manuale'
+            Switch:
+                id: switch_free_drive
+                on_active: root.free_drive_fun(self.active)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Pinza (apri/chiudi)'
+            Switch:
+                id: switch_gripper
+                on_active: root.gripper_fun(self.active)
+    BoxLayout:
+        size_hint_y: 0.05
+        pos_hint: {'y': 0.75}
+        orientation: 'horizontal'
+        ToggleButton:
+            group: 'selection control'
+            state: 'down'
+            text: 'Controllo giunti'
+            on_release:
+                root.create_controller_joints()
+        ToggleButton:
+            group: 'selection control'
+            text: 'Controllo cartesiano'
+            on_release:
+                root.carica_controllo_xyz()
+    GridLayout:
+        id: container
+        cols: 1
+        size_hint_y: 0.75
+        height: self.minimum_height
+
+<Controller_joints>
+    name: 'controller_joints'
+    GridLayout:
+        cols: 1
+        #1
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.stop_vel_modify()
+                on_press:
+                    root.downer(0)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_1: ' + str(round(joint_1.value * 3.38 - 169,2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-169'
+                    ProgressBar:
+                        id: joint_1
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '169'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.stop_vel_modify()
+                on_press:
+                    root.upper(0)
+        #2
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.stop_vel_modify()
+                on_press:
+                    root.downer(1)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_2: ' + str(round(joint_2.value * 1.88 -144,2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-144'
+                    ProgressBar:
+                        id: joint_2
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '44'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.stop_vel_modify()
+                on_press:
+                    root.upper(1)
+        #3
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.downer(2)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_3: ' + str(round(joint_3.value * 3.38 - 169,2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-169'
+                    ProgressBar:
+                        id: joint_3
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '169'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.upper(2)
+        #4
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.downer(3)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_4: ' + str(round(joint_4.value * 2.04 - 124 ,2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-124'
+                    ProgressBar:
+                        id: joint_4
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '80'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.upper(3)
+        #5
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.downer(4)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_5: ' + str(round(joint_5.value * 5.80 - 290,2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-290'
+                    ProgressBar:
+                        id: joint_5
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '290'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.upper(4)
+        #6
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.downer(5)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_6: ' + str(round(joint_6.value * 2.26 - 88, 2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-88'
+                    ProgressBar:
+                        id: joint_6
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '138'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.upper(5)
+        #7
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.downer(6)
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Joint_7: ' + str(round(joint_7.value * 4.58 - 229, 2))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        size_hint_x: 0.1
+                        text: '-229'
+                    ProgressBar:
+                        id: joint_7
+                        max:100
+                        value: 50
+                    Label:
+                        size_hint_x: 0.1
+                        text: '229'
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+					root.stop_vel_modify()
+                on_press:
+                    root.upper(6)
+
+<Controller_xyz>
+    name: 'controller_xyz'
+    GridLayout:
+        cols: 1
+        #x
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('x')
+            Label:
+                id: x
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('x')
+        #y
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('y')
+            Label:
+                id: y
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('y')
+        #z
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('z')
+            Label:
+                id: z
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('z')
+        #rx
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('rx')
+            Label:
+                id: rx
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('rx')
+        #ry
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('ry')
+            Label:
+                id: ry
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('ry')
+        #rz
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('rz')
+            Label:
+                id: rz
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('rz')
+        #rw
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_x: 0.1
+                text: '-'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.downer_xyz('rw')
+            Label:
+                id: rw
+                text: '' 
+            Button:
+                size_hint_x: 0.1
+                text: '+'
+                on_release:
+                    root.static_xyz()
+                on_press:
+                    root.upper_xyz('rw')
+     

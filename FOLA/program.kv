@@ -1,0 +1,394 @@
+#:kivy 1.0
+<CustomWidgetPP>:
+    height: 60
+    size_hint_y: None
+    GridLayout:
+        cols: 4
+        Label:
+            text: 'Spostati ad un punto'
+            color: (root.count)/15,(root.count)/7,(root.count)/3,1
+        Button:
+            size_hint_x: 0.5
+            text: 'modifica'
+            on_press: 
+                root.PP_page(True, root.count)
+        Button:
+            size_hint_x: 0.5
+            text: 'Test'
+            on_press: 
+                root.Test(root.count)
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                size_hint_x: 0.2
+                text: '-'
+                on_press: 
+                    root.remove()
+                    root.create_new_program_page()
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                background_normal: 'icon/up.png'
+                size_hint: 0.2, 1
+                on_release:
+                    root.move_to_up(root.count)
+                    app.manager.get_screen('new_program').read_program()    
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/down.png'
+                on_release: 
+                    root.move_to_down(root.count)
+                    app.manager.get_screen('new_program').read_program()
+            
+<CustomWidgetRT>:
+    height: 60
+    size_hint_y: None
+    GridLayout:
+        cols: 4
+        Label:
+            text: 'Percorso registrato'
+            color: (root.count)/15,(root.count)/7,(root.count)/3,1
+        Button:
+            size_hint_x: 0.5
+            text: 'modifica'
+            on_press: 
+                root.RT_page(True, root.count)
+        Button:
+            size_hint_x: 0.5
+            text: 'Test'
+            on_press: 
+                root.Test(root.count)
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                size_hint_x: 0.2
+                text: '-'
+                on_press: 
+                    root.remove()
+                    root.create_new_program_page()
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                
+                background_normal: 'icon/up.png'
+                size_hint: 0.2, 1
+                on_release: 
+                    root.move_to_up(root.count)
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/down.png'
+                on_release: 
+                    root.move_to_down(root.count)
+                    app.manager.get_screen('new_program').read_program()
+
+<CustomWidgetOP>:
+    height: 60
+    size_hint_y: None
+    GridLayout:
+        cols:3
+        Label:
+            text: 'Apri Pinza'
+        Button:
+            text: 'Test'
+            on_press: 
+                root.Test(root.count)
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                size_hint: 0.2, 1
+                text: '-'
+                on_press: 
+                    root.remove()
+                    root.create_new_program_page()
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/up.png'
+                on_release: 
+                    root.move_to_up(root.count)
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/down.png'
+                on_release: 
+                    root.move_to_down(root.count)
+                    app.manager.get_screen('new_program').read_program()
+
+<CustomWidgetCP>:
+    height: 60
+    size_hint_y: None
+    GridLayout:
+        cols:3
+        Label:
+            text: 'Chiudi pinza'
+        Button:
+            text: 'Test'
+            on_press: 
+                root.Test(root.count)
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                size_hint: 0.2, 1
+                text: '-'
+                on_press: 
+                    root.remove()
+                    root.create_new_program_page()
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/up.png'
+                on_release: 
+                    root.move_to_up(root.count)
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/down.png'
+                on_release:
+                    root.move_to_down(root.count)
+                    app.manager.get_screen('new_program').read_program()
+
+
+<CustomWidgetRipetiStart>:
+    height: 60
+    size_hint_y: None
+    GridLayout:
+        cols: 3
+        Label:
+            text: 'START ripeti: '  + str(root.num_ripeti)
+            color: root.count/15,root.count/7,root.count/3,1
+        Button:
+            text: 'modifica'
+            on_press: 
+                root.ripeti_page(True, root.count)
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: '-'
+                size_hint_x: 0.2
+                on_press: 
+                    root.remove()
+                    root.create_new_program_page()
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/up.png'
+                on_release:
+                    root.move_to_up(root.count)
+                    app.manager.get_screen('new_program').read_program()
+            Button:
+                size_hint: 0.2, 1
+                background_normal: 'icon/down.png'
+                on_release:
+                    root.move_to_down(root.count)
+                    app.manager.get_screen('new_program').read_program()
+
+<CustomWidgetRipetiStop>:
+    height: 60
+    size_hint_y: None
+    Label:
+        text: 'Ciclo ripeti STOP'
+        color: (root.count-1)/15,(root.count-1)/7,(root.count-1)/3,1
+    Button:
+        size_hint: 1/7, 1
+        background_normal: 'icon/up.png'
+        on_release: 
+            root.move_to_up(root.count)
+            app.manager.get_screen('new_program').read_program()
+    Button:
+        size_hint: 1/7, 1
+        background_normal: 'icon/down.png'
+        on_release:
+            root.move_to_down(root.count)
+            app.manager.get_screen('new_program').read_program()
+
+<New_program>:
+    name: 'new_program'
+    GridLayout:
+        cols: 1
+        pos_hint: {'y': 0.8}
+        size_hint_y: 0.2
+        BoxLayout:
+            height: 60
+            size_hint_y: 0.1
+            Button:
+                text: 'Aggiungi funzione'
+                on_press:
+                    root.count = root.count + 1 
+                    root.add_customwidget()       
+            Label:
+                id: label_name_program
+                text: 'Crea il tuo programma' + str(root.file_name)
+            Button:
+                text: 'Play'
+                on_release: root.play(root.file_path, root.file_name)
+        BoxLayout:
+            height: 60
+            size_hint_y: 0.1
+            Label:
+                text: 'START'
+                color: 0.7,0.7,1,1
+                canvas.before:
+                    Color:
+                        rgba: 99/255.0, 96/255.0, 137/255.0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Button:
+                size_hint_x: 0.2
+                text: "modifica"
+                on_press: 
+                    root.START_page(True)        
+    GridLayout:
+        cols: 1
+        size_hint_y: 0.7
+        pos_hint: {'y':0.1}
+        ScrollView:
+            id: scrollview
+            scroll_type: ['bars', 'content']
+            bar_width: 4
+            GridLayout:
+                id: container
+                cols: 1
+                size_hint: 1, None
+                height: self.minimum_height
+    BoxLayout:
+        height: 60
+        size_hint_y: 0.1
+        Label:
+            text: 'STOP'
+            color: 0.7,0.7,1,1
+            canvas.before:
+                Color:
+                    rgba: 99/255.0, 96/255.0, 137/255.0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+<ChooseDialog>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        Button:
+            text: "Muovi fino a un punto"
+            on_release: 
+                root.point_to_point()     
+        Button:
+            text: "Registrazione movimento"
+            on_release: 
+                root.recorder_track()
+        Button:
+            text: "Apri pinza"
+            on_release: 
+                root.open_pinza()
+        Button:
+            text: "Chiudi pinza"
+            on_release: 
+                root.close_pinza()
+        Button:
+            text: "Ripeti più volte"
+            on_release:
+                root.ripeti()
+                    
+<PPDialog>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        height: 60
+        Label:
+            text: "E' necessario indicare il punto da raggiungere"
+        Button:
+            text: "Abilitazione movimentazione manuale del robot"
+            on_release: root.freeDriver()
+        Button:
+            text: "Allinea ortogonale al piano"
+            on_press:
+                root.disable_save_button()
+            on_release: 
+                root.allinea()
+        Button:
+            id: save_button
+            disabled: False
+            text: "Salva"
+            on_release:
+                root.savePP(root.update, root.count)
+
+<STARTDialog>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        height: 60
+        Label:
+            text: "E' necessario indicare il punto di start del programma"
+        Button:
+            text: "Abilitazione movimentazione manuale del robot"
+            on_release: root.freeDriver()
+        Button:
+            text: "Salva"
+            on_release: 
+                root.saveSTART(root.update)
+
+<RIPETIDialog>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        height: 20
+        Label:
+            text: "E' necessario indicare il numero di volte che si vuole ripetere il programma"
+        TextInput:
+            id:cal_input
+            text:"1"
+            halign: "right"
+            font_size:16
+            size_hint:(1,0.25)
+            hint_text:'Solo numeri'
+            input_filter : 'int'
+            multiline:False
+            write_tab:False
+        Button:
+            text: "Salva"
+            on_release: 
+                root.num_ripeti = int(cal_input.text)
+                root.saveRIPETI(root.num_ripeti, root.update, root.count)
+                app.manager.get_screen('new_program').create_new_program_page()
+                app.manager.get_screen('new_program').read_program()
+
+<RTDialog>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        height: 60
+        Label:
+            text: "E' necessario indicare il punto di partenza del braccio"
+        Button:
+            text: "Abilitazione movimentazione manuale del robot"
+            on_release: root.freeDriver()  
+        Button:
+            id: button_recorder_start
+            text: "Inizia la registrazione e salva la posizione iniziale"
+            disabled: False
+            on_release:
+                root.saveRT()
+                root.start_recorder()
+                root.enable_stop_button()
+        Button:
+            id: button_recorder_stop
+            text: "Stop recorder"
+            disabled: True
+            on_release:
+                root.stopRT(root.update, root.count)
+                root.stop_fine_corsa_control()
+<ErrorDialog>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        height: 60
+        Button:
+            text: 'Errore perchè si è superato il finecorsa, premere per ricominciare'
+            background_color: 1, 0, 0, 1
+            on_release:
+                root.close_popup_error()

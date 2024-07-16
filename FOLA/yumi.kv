@@ -1,0 +1,22 @@
+#:kivy 1.0
+<MainMenu>:
+    rows: 1
+    size_hint: (1, None)
+    height: 50
+    spacing: 5
+    padding: 5
+    ToggleButton:
+        group: 'mainmenu'
+        state: 'down'
+        text: ' Controllo'
+        on_press:
+            app.manager.current = 'controller'
+            app.switch_controller_velocity_joint()
+            if self.state == 'normal': self.state = 'down'
+    ToggleButton:
+        group: 'mainmenu'
+        text: 'Programmazione'
+        on_press:
+            app.manager.current = 'programming'
+            app.switch_controller_move_group()
+            if self.state == 'normal': self.state = 'down'

@@ -1,0 +1,81 @@
+#:kivy 1.0
+<Programming>:
+    label_wid: my_custom_label
+    name: 'programming'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        Button:
+            text: 'Crea nuovo programma'
+            on_press:
+                root.show_save()
+        Label:
+            id: my_custom_label
+            text: 'Scegliere se:\ncreare un nuovo programma o aprirne uno esistente'       
+        Button:
+            text: 'Carica programma esistente'
+            on_press: 
+                root.show_load()
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: '/home/francesco/Scrivania/Tesi_versioni'
+            on_selection: root.ids.load_button.disabled = False
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+            Button:
+                id: load_button
+                disabled: True
+                text: "Carica"
+                on_release: 
+                    root.load(filechooser.path, filechooser.selection)
+                    app.manager.get_screen('programming').file_path = root.ids.filechooser.path
+                    app.manager.get_screen('programming').file_name = root.ids.filechooser.selection[0]
+                    app.create_new_program_page()
+                    app.manager.get_screen('new_program').read_program()
+                
+<SaveDialog>:
+    text_input: text_input
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: '/home/francesco/Scrivania/Tesi_versioni'
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+        TextInput:
+            id: text_input
+            size_hint_y: None
+            height: 30
+            multiline: False
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+            Button:
+                text: "Salva"
+                on_release: 
+                    root.save(filechooser.path, text_input.text)
+                    app.manager.get_screen('programming').file_path = root.ids.filechooser.path
+                    app.manager.get_screen('programming').file_name = root.ids.text_input.text
+                    app.manager.get_screen('new_program').file_path = root.ids.filechooser.path
+                    app.manager.get_screen('new_program').file_name = root.ids.text_input.text
+                    app.manager.current = 'new_program'
+                    app.create_new_program_page()
+                    app.manager.get_screen('new_program').START_page(False)
+
+
+
+
