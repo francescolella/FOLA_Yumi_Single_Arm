@@ -265,8 +265,4 @@ If the previous command's output is **"EGM IS NOT CONNECTED"**, Linux's firewall
   sudo iptables -I INPUT -p udp --dport 6511 -j ACCEPT
   sudo iptables -A OUTPUT -p udp -m udp --sport 6511 -j ACCEPT
 ```
-
-# Final notes
-Before you try to use the robot purely in simulation with RobotStudio + ROS, let me save you valuable time: **it does not work**. Or at least, it works if you want to control the robot with RWS only and not with EGM (note that if you want to move the robot without a RAPID script, you will need EGM pkg).
-
-The fun thing is that it does not work not because of a software problem from ROS or this package but because ABB, at least when you want to virtualise the controller with RobotStudio, does not allow any communication with external computers except the one where RobotStudio is running. RobotStudio can only run on Windows, so it is possible (as far as I know) to have the two running on the same machine. If you solve this issue somehow, email me at niccolo.lucci@polimi.it or make a pull request.  
+ 
