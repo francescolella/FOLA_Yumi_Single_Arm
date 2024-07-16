@@ -125,7 +125,7 @@ sudo apt-get install libboost-all-dev
 Clone the current repository in the newly created ROS workspace 'catkin_ws' and build it:
 ```bash
 cd catkin_ws/src
-git clone [https://github.com/MerlinLaboratory/abb_wrapper.git](https://github.com/francescolella/FOLA_Yumi_Single_Arm.git)
+git clone https://github.com/francescolella/FOLA_Yumi_Single_Arm.git
 cd ..
 catkin build
 ```
