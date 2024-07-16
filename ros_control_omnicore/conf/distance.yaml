@@ -1,0 +1,9 @@
+dx_marker_rif: 0.0
+dy_marker_rif: 0.07
+dz_marker_rif: 0.09
+dx_marker_obstacle: 0.075
+dy_marker_obstacle: 0.04
+dz_marker_obstacle: -0.075
+reduce_x: 0.22 #le grandezze sono aumentate di 2cm
+reduce_y: 0.10 #le grandezze sono aumentate di 2cm
+reduce_z: 0.22 #le grandezze sono aumentate di 2cm

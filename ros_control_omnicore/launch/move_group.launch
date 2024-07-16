@@ -1,0 +1,17 @@
+<launch>
+  <arg name="yamlFile" default="$(find ros_control_omnicore)/conf/distance.yaml" />
+  <rosparam command="load" file="$(arg yamlFile)" />
+
+
+  <!-- Load il riconoscitore dei marker -->
+  <include file="$(find aruco_ros)/launch/single.launch">
+  </include>
+
+  <!-- Load la camera -->
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch">
+  </include>
+
+  <!-- Load funzione per move group -->
+  <node pkg="ros_control_omnicore" name="omnicore_move_group" type="move_group_node" output="screen" />
+
+</launch>

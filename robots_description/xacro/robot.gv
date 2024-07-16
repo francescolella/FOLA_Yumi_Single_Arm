@@ -1,0 +1,41 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"single_yumi_base_link" [label="single_yumi_base_link"];
+"link_1" [label="link_1"];
+"link_2" [label="link_2"];
+"link_3" [label="link_3"];
+"link_4" [label="link_4"];
+"link_5" [label="link_5"];
+"link_6" [label="link_6"];
+"link_7" [label="link_7"];
+"gripper_base" [label="gripper_base"];
+"grasp_link" [label="grasp_link"];
+"gripper_finger_l" [label="gripper_finger_l"];
+"gripper_finger_r" [label="gripper_finger_r"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "joint_0" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"joint_0" -> "single_yumi_base_link"
+"single_yumi_base_link" -> "joint_1" [label="xyz: 0 0 0.2048 \nrpy: 0 -0 3.14159"]
+"joint_1" -> "link_1"
+"link_1" -> "joint_2" [label="xyz: 0.03 0 0.1 \nrpy: 1.5708 -0 0"]
+"joint_2" -> "link_2"
+"link_2" -> "joint_3" [label="xyz: -0.03 0.17283 0 \nrpy: -1.5708 0 0"]
+"joint_3" -> "link_3"
+"link_3" -> "joint_4" [label="xyz: -0.04188 0 0.07873 \nrpy: 0 -1.5708 1.5708"]
+"joint_4" -> "link_4"
+"link_4" -> "joint_5" [label="xyz: 0.0405 0.16461 0 \nrpy: -1.5708 0 0"]
+"joint_5" -> "link_5"
+"link_5" -> "joint_6" [label="xyz: -0.027 0 0.10039 \nrpy: 1.5708 -0 0"]
+"joint_6" -> "link_6"
+"link_6" -> "joint_7" [label="xyz: 0.027 0.029 0 \nrpy: -1.5708 0 0"]
+"joint_7" -> "link_7"
+"link_7" -> "link_7_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"link_7_joint" -> "gripper_base"
+"gripper_base" -> "grasp_joint" [label="xyz: 0 0 0.13 \nrpy: 0 -0 0"]
+"grasp_joint" -> "grasp_link"
+"gripper_base" -> "gripper_joint_l" [label="xyz: 0 0.0065 0.0837 \nrpy: 0 -0 3.14159"]
+"gripper_joint_l" -> "gripper_finger_l"
+"gripper_base" -> "gripper_joint_r" [label="xyz: 0 -0.0065 0.0837 \nrpy: 0 -0 0"]
+"gripper_joint_r" -> "gripper_finger_r"
+}
